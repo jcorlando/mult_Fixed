@@ -10,16 +10,13 @@ module mult_Fixed # (parameter WI1 = 4, WF1 = 4,   // input 1 integer and fracti
     input signed [WI2 + WF2 - 1 : 0] in2,     // Multiplier
     output reg signed [WIO + WFO - 1 : 0] out // Output
 );
-    wire [7 : 0] scale_Factor = WI1 > WI2 ? WI1 : WI2;
-    wire signed [WI1 + WF1 - 1 : 0] in1_Temp;
-    wire signed [WI2 + WF2 - 1 : 0] in2_Temp;
     
-    always @ (posedge CLK)
+    
+    always @ (*)
     begin
-        out <= in1*in2;
+        if(RESET) out <= 0;
+        else out <= in1*in2;
     end
-    
-    
     
 endmodule
 
