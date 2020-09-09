@@ -15,10 +15,6 @@ wire signed [WIO + WFO - 1 : 0] out;
 //Instantiate DUT
 mult_Fixed #( .WI1(WI1), .WF1(WF1), .WI2(WI2), .WF2(WF2), .WIO(WIO) )
         DUT( .RESET(RESET), .in1(in1), .in2(in2), .out(out) );
-        
-        
-        wire [WIO - 1 : 0] precise_int_bits  = DUT.precise_int_bits;
-        wire [WFO - 1 : 0] precise_frac_bits = DUT.precise_frac_bits;
 
 initial
 begin
