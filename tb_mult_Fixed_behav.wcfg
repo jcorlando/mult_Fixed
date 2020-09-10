@@ -13,13 +13,13 @@
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
       <ZoomEndTime time="1000001fs"></ZoomEndTime>
-      <Cursor1Time time="750000fs"></Cursor1Time>
+      <Cursor1Time time="75067fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="130"></ValueColumnWidth>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <ValueColumnWidth column_width="111"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="4" />
+   <WVObjectSize size="10" />
    <wvobject fp_name="/tb_mult_Fixed/RESET" type="logic">
       <obj_property name="ElementShortName">RESET</obj_property>
       <obj_property name="ObjectShortName">RESET</obj_property>
@@ -41,11 +41,44 @@
       <obj_property name="radix_otherWidth">0</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_mult_Fixed/out" type="array">
-      <obj_property name="ElementShortName">out[16:0]</obj_property>
-      <obj_property name="ObjectShortName">out[16:0]</obj_property>
+      <obj_property name="ElementShortName">out[13:0]</obj_property>
+      <obj_property name="ObjectShortName">out[13:0]</obj_property>
       <obj_property name="Radix">REALRADIX</obj_property>
       <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
       <obj_property name="radix_fractionWidth">9</obj_property>
       <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mult_Fixed/fullPreciseProduct" type="array">
+      <obj_property name="ElementShortName">fullPreciseProduct[16:0]</obj_property>
+      <obj_property name="ObjectShortName">fullPreciseProduct[16:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">9</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mult_Fixed/precise_int_bits" type="array">
+      <obj_property name="ElementShortName">precise_int_bits[6:0]</obj_property>
+      <obj_property name="ObjectShortName">precise_int_bits[6:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mult_Fixed/precise_frac_bits" type="array">
+      <obj_property name="ElementShortName">precise_frac_bits[9:0]</obj_property>
+      <obj_property name="ObjectShortName">precise_frac_bits[9:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mult_Fixed/temp_out_int_bits" type="array">
+      <obj_property name="ElementShortName">temp_out_int_bits[3:0]</obj_property>
+      <obj_property name="ObjectShortName">temp_out_int_bits[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mult_Fixed/temp_out_frac_bits" type="array">
+      <obj_property name="ElementShortName">temp_out_frac_bits[9:0]</obj_property>
+      <obj_property name="ObjectShortName">temp_out_frac_bits[9:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_mult_Fixed/tmp" type="array">
+      <obj_property name="ElementShortName">tmp[2:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[2:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
 </wave_config>
