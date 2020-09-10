@@ -4,8 +4,8 @@ module tb_mult_Fixed;
 // parameters
 parameter WI1 = 5, WF1 = 3,     // input 1 integer and fraction bits
           WI2 = 3, WF2 = 6,     // input 2 integer and fraction bits
-          WIO = WI1 + WI2 - 1,  // output  integer and fraction bits
-          WFO = WF1 + WF2 + 1;  // output  integer and fraction bits
+          WIO = WI1 + WI2 - 1,  // output  integer and fraction bits; WI1 + WI2 - 1
+          WFO = WF1 + WF2 + 1;  // output  integer and fraction bits; WF1 + WF2 + 1
 //Inputs
 reg RESET;
 reg signed [WI1 + WF1 - 1 : 0] in1;
