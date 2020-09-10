@@ -41,23 +41,48 @@ module mult_Fixed # ( parameter WI1 = 4, WF1 = 4,    // input 1 integer and frac
         begin
             // Logic for integer bits
             if( WIO == WI1 + WI2 - 1 )  // Assign precise bits to temp_out_int_bits
+            begin
                 temp_out_int_bits <= precise_int_bits;
+                // ----------------------------- Check for overflow
+                if( in1[WI1+WF1-1]==in2[WI2+WF2-1]==~out[WIO+WFO-1] || (~in1[WI1+WF1-1]==~in2[WI2+WF2-1]==out[WIO+WFO-1]) )
+                    OVF <= 1;
+                else
+                    OVF <= 0;
+            end
             else if( WIO > WI1 + WI2 - 1 )  // sign-extend
+            begin
                 temp_out_int_bits <= {{ (WIO - WIP){precise_int_bits[WIP - 1]}} , precise_int_bits };
+                OVF <= 0;       // Overflow always = 0 in this case
+            end
             else        // WIO < WI1 + WI2 - 1;
             begin
                 tmp <= precise_int_bits[WIP - 1 : WIP - (WIP - WIO)];
                 temp_out_int_bits <= { precise_int_bits[WIP - 1], precise_int_bits[WIO - 2 : 0] };
+                   // ----------------------------- Check for overflow
+                if( (in1[WI1+WF1-1]==in2[WI2+WF2-1]== (&tmp) ) || ( ~in1[WI1+WF1-1]==~in2[WI2+WF2-1]== (|tmp)) )
+                    OVF <= 0;
+                else
+                    OVF <= 1;
             end
             
             
+            
             // Logic for fraction bits
-            if( WFO == WF1 + WF2 + 1 ) // Assign precise bits to temp_out_frac_bits
+            if( WFO == WF1 + WF2 + 1 ) 
+            begin                       // Assign precise bits to temp_out_frac_bits
                 temp_out_frac_bits <= precise_frac_bits;
-            else if( WFO > WF1 + WF2 + 1 )  // Append zeros
-                temp_out_frac_bits <= { precise_frac_bits , { (WFP - WFO){1'b0}} };
-            else       // WFO < WF1 + WF2 + 1; Truncate bits
-                temp_out_frac_bits <= precise_frac_bits[WFP - 1 : WFP - 1 - WFO];
+                OVF <= 0;
+            end
+            else if( WFO > WF1 + WF2 + 1 )
+            begin                           // Append zeros
+                temp_out_frac_bits <= { precise_frac_bits[WFP - 1 : 0] , {(WFO - (WF1 + WF2 + 1)){1'b0}} };
+                OVF <= 0;
+            end
+            else
+            begin       // WFO < WF1 + WF2 + 1; Truncate bits
+                temp_out_frac_bits <= precise_frac_bits[WFP - 1 : WFP - 1 - (WFO - 1)];
+                OVF <= 0;
+            end
         end
     end
     
